@@ -46,7 +46,7 @@ Aplikasi ini mengadopsi arsitektur **Clean Architecture** atau **Layered Archite
 
 ## Struktur Database
 
-Berikut adalah struktur tabel database utama yang digunakan oleh aplikasi ini.
+Berikut adalah struktur tabel database utama yang digunakan oleh aplikasi ini, terdapat juga file SQL nya di root project, tinggal Import saja langsung ke dalam Mysql database.
 
 ### Tabel `konsumen`
 
