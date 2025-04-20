@@ -63,6 +63,16 @@ Berikut adalah struktur tabel database utama yang digunakan oleh aplikasi ini.
 | `foto_selfie`   | `VARCHAR(255)`   |                   | Nama file foto selfie konsumen               |
 
 
+### Tabel `limit_konsumen`
+
+| Kolom   | Tipe Data    | Constraints       | Deskripsi                                      |
+| ------- | ------------ | ----------------- | ---------------------------------------------- |
+| `id`    | `INT(11)`    | `PRIMARY KEY`, `AUTO_INCREMENT` | ID unik pengajuan kredit                      |
+| `nik`   | `VARCHAR(16)`| `NOT NULL`        | Nomor Induk Kependudukan konsumen (FK ke `konsumen`) |
+| `tenor` | `INT(11)`    | `NOT NULL`        | Jangka waktu (tenor) pengajuan kredit (dalam bulan) |
+| `jumlah`| `INT(11)`    | `NULL`            | Jumlah dana yang diajukan                     |
+
+
 ### Tabel `transaksi`
 
 | Kolom           | Tipe Data        | Constraints       | Deskripsi                                    |
@@ -119,32 +129,22 @@ Berikut adalah beberapa endpoint API yang tersedia:
 * `POST /api/konsumen`: Membuat konsumen baru.
 * `PUT /api/konsumen/{konsumenId}`: Memperbarui informasi konsumen berdasarkan ID.
 * `DELETE /api/konsumen/{konsumenId}`: Menghapus konsumen berdasarkan ID.
-* `GET /api/konsumenlimits`: Mendapatkan informasi limit konsumen (detail struktur response perlu ditambahkan).
+* `GET /api/konsumenlimits`: Mendapatkan informasi limit konsumen
 
 ### Limit Konsumen
 
-* `POST /api/limit-konsumen`: Membuat limit konsumen baru (detail body request perlu ditambahkan).
+* `POST /api/limit-konsumen`: Membuat limit konsumen baru.
 
 ### Transaksi
 
-* `POST /api/transaksi`: Membuat transaksi baru (detail body request perlu ditambahkan).
-* `GET /api/transaksikonsumen`: Mendapatkan daftar transaksi beserta informasi konsumen terkait (detail struktur response perlu ditambahkan).
+* `POST /api/transaksi`: Membuat transaksi baru.
+* `GET /api/transaksikonsumen`: Mendapatkan daftar transaksi beserta informasi konsumen terkait.
 
 ### Upload Dokumen
 
 * `POST /api/upload/ktp/{konsumenId}`: Mengupload file foto KTP untuk konsumen dengan ID tertentu.
-* `POST /api/upload/fotoselfie/{konsumenId}`: Mengupload file foto selfie untuk konsumen dengan ID tertentu (detail body request perlu ditambahkan).
-
-
-## Pengembangan Lebih Lanjut
-
-* Implementasi otentikasi dan otorisasi untuk mengamankan endpoint API.
-* Validasi input yang lebih komprehensif.
-* Penanganan error yang lebih baik dan response yang lebih informatif.
-* Penerapan logging.
-* Pengujian unit dan integrasi.
-* Dokumentasi API yang lebih detail (misalnya, menggunakan Swagger/OpenAPI).
+* `POST /api/upload/fotoselfie/{konsumenId}`: Mengupload file foto selfie untuk konsumen dengan ID tertentu.
 
 ---
 
-**XYZ Multifinance Team**
+**XYZ Multifinance Developer Team**
