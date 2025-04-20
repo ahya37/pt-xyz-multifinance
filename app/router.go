@@ -7,7 +7,7 @@ import (
 	"github.com/julienschmidt/httprouter"
 )
 
-func NewRouter(KonsumenController controller.KonsumenController, LimitKonsumenController controller.LimitKonsumenController, TransaksiController controller.TransaksiController) *httprouter.Router {
+func NewRouter(KonsumenController controller.KonsumenController, LimitKonsumenController controller.LimitKonsumenController, TransaksiController controller.TransaksiController, UploadController controller.UploadController) *httprouter.Router {
 	router := httprouter.New()
 
 	// CRUD data Konsumen
@@ -24,6 +24,9 @@ func NewRouter(KonsumenController controller.KonsumenController, LimitKonsumenCo
 	// Transaksi
 	router.POST("/api/transaksi", TransaksiController.Create)
 	router.GET("/api/transaksikonsumen", TransaksiController.TransactionKonsumen)
+
+	router.POST("/api/upload/ktp/:konsumenId", UploadController.UploadKTP)
+	router.POST("/api/upload/fotoselfie/:konsumenId", UploadController.UploadFotoSelfie)
 
 	router.PanicHandler = exception.ErrorHandler
 
